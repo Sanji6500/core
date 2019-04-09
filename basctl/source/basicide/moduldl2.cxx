@@ -1495,18 +1495,18 @@ void createLibImpl(weld::Window* pWin, const ScriptDocument& rDocument,
                 if(SfxDispatcher* pDispatcher = GetDispatcher())
                 {
                     // I2TM
-                    ::Item::SlotSet::SharedPtr aSlotSet(::Item::SlotSet::Create());
-                    aSlotSet->SetSlot(SID_BASICIDE_ARG_SBX, Item::Sbx::Create(
-                        rDocument,
-                        aLibName,
-                        aModName,
-                        OUString(),
-                        TYPE_MODULE));
-                    pDispatcher->ExecuteList(
+                    const std::shared_ptr<const ::Item::ItemBase> aSbxItem(
+                        Item::Sbx::Create(
+                            rDocument,
+                            aLibName,
+                            aModName,
+                            OUString(),
+                            TYPE_MODULE));
+                    pDispatcher->ExecuteList2(
                         SID_BASICIDE_SBXINSERTED,
                         SfxCallMode::SYNCHRON,
-                        aSlotSet
-                    );
+                        { &aSbxItem });
+                    // ~I2TM
                 }
 
                 if( pBasicBox )
@@ -1619,18 +1619,18 @@ void createLibImpl(weld::Window* pWin, const ScriptDocument& rDocument,
                 if(SfxDispatcher* pDispatcher = GetDispatcher())
                 {
                     // I2TM
-                    ::Item::SlotSet::SharedPtr aSlotSet(::Item::SlotSet::Create());
-                    aSlotSet->SetSlot(SID_BASICIDE_ARG_SBX, Item::Sbx::Create(
-                        rDocument,
-                        aLibName,
-                        aModName,
-                        OUString(),
-                        TYPE_MODULE));
-                    pDispatcher->ExecuteList(
+                    const std::shared_ptr<const ::Item::ItemBase> aSbxItem(
+                        Item::Sbx::Create(
+                            rDocument,
+                            aLibName,
+                            aModName,
+                            OUString(),
+                            TYPE_MODULE));
+                    pDispatcher->ExecuteList2(
                         SID_BASICIDE_SBXINSERTED,
                         SfxCallMode::SYNCHRON,
-                        aSlotSet
-                    );
+                        { &aSbxItem });
+                    // ~I2TM
                 }
 
                 if( pBasicBox )
