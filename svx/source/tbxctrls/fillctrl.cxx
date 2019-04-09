@@ -83,7 +83,7 @@ SvxFillToolBoxControl::~SvxFillToolBoxControl()
 void SvxFillToolBoxControl::StateChanged(
     sal_uInt16 nSID,
     SfxItemState eState,
-    const SfxPoolItem* pState, const Item::ItemBase::SharedPtr& /*rSlotItem*/)
+    const SfxPoolItem* pState, const std::shared_ptr<const Item::ItemBase>& /*rSlotItem*/)
 {
     const bool bDisabled(SfxItemState::DISABLED == eState);
 

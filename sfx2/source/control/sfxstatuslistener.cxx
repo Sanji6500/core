@@ -64,7 +64,7 @@ SfxStatusListener::~SfxStatusListener()
 }
 
 // old sfx controller item C++ API
-void SfxStatusListener::StateChanged( sal_uInt16, SfxItemState, const SfxPoolItem*, const Item::ItemBase::SharedPtr& /*rSlotItem*/)
+void SfxStatusListener::StateChanged( sal_uInt16, SfxItemState, const SfxPoolItem*, const std::shared_ptr<const Item::ItemBase>& /*rSlotItem*/)
 {
     // must be implemented by sub class
 }
@@ -161,7 +161,7 @@ void SAL_CALL SfxStatusListener::statusChanged( const FeatureStateEvent& rEvent)
 
     SfxItemState eState = SfxItemState::DISABLED;
     std::unique_ptr<SfxPoolItem> pItem;
-    Item::ItemBase::SharedPtr aSlotItem;
+    std::shared_ptr<const Item::ItemBase> aSlotItem;
 
     if ( rEvent.IsEnabled )
     {
